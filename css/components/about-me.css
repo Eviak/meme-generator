@@ -1,9 +1,11 @@
 .about-me-section {
     justify-content: center;
+    gap: 40px;
 }
 
-.about-me-section img {
+.about-me-section > img:first-of-type {
     width: 300px;
+    border-radius: 50%;
 }
 
 .about-me-content {
@@ -14,4 +16,8 @@
 .about-me-content p {
     font-size: 1.25rem;
     width: 540px;
+}
+
+.about-me-icons img {
+    width: 40px;
 }
