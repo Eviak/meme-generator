@@ -1,10 +1,17 @@
 header {
   background-color: var(--clr1);
+  padding: 0px 55px;
+  align-items: center;
 }
 
 .logo {
+  background-image: url("/imgs/logo.png");
+  background-repeat: no-repeat;
   width: 130px;
+  height: 30px;
   cursor: pointer;
+  background-size: contain;
+  /* margin-top: 20px; */
 }
 
 header nav {
@@ -12,5 +19,12 @@ header nav {
 }
 
 header nav a:not(:last-child) {
-    border-right: 1px solid var(--clr3);
+  border-right: 1px solid var(--clr3);
+}
+
+header nav a {
+  display: inline-block;
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
 }

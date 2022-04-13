@@ -2,6 +2,14 @@
     background-color: var(--clr1);
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 205px;
+    color: #fff;
+    gap: 15px;
+}
+
+.copyrighs {
+    font-size: 1.1875rem;
 }
 
 .main-footer > img:first-of-type {

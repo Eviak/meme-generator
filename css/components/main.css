@@ -1,11 +1,24 @@
+.memes-container {
+  background-color: var(--clr2);
+  display: flex;
+  justify-content: center;
+}
+
 .memes {
-    background-color: var(--clr2);
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    gap: 10px;
+  grid-template-rows: repeat(3, var(--memeWidth));
+  grid-template-columns: repeat(3, var(--memeWidth));
+  /* justify-items: center; */
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .memes img {
-    width: 350px;
+  width: var(--memeWidth);
+  cursor: pointer;
+}
+
+.meme-image-1,
+.meme-image-2,
+.meme-image-3 {
 }

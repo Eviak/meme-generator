@@ -11,41 +11,44 @@
 
 <body>
 
-    <header class="flex-spaced width-center">
-        <img class="logo" src="/imgs/logo.png" alt="Memegen logo">
-        <nav>
+    <header class="flex-spaced width-center border">
+        <div class="logo"></div>
+        <!-- <img class="logo" src="/imgs/logo.png" alt="Memegen logo"> -->
+        <nav class="flex">
             <a href="#">Gallery</a>
             <a href="#">About</a>
         </nav>
     </header>
 
-    <section class="filter-section flex-spaced width-center">
+    <section class="filter-section flex-spaced border">
         <div class="search-filter">
             <input type="text" placeholder="Enter search keyword">
         </div>
-        <div class="click-filter">
-            <button>funny</button>
-            <button>comics</button>
-            <button>dogs</button>
-            <button>drinks</button>
-            <button>books</button>
-            <button>more...</button>
+        <div class="click-filter flex">
+            <div>funny</div>
+            <div>comics</div>
+            <div>dogs</div>
+            <div>drinks</div>
+            <div>books</div>
+            <div>more...</div>
         </div>
     </section>
 
-    <main class="memes grid width-center">
-        <img src="imgs/meme-imgs/1.jpg" alt="Meme image">
-        <img src="imgs/meme-imgs/2.jpg" alt="Meme image">
-        <img src="imgs/meme-imgs/3.jpg" alt="Meme image">
-        <img src="imgs/meme-imgs/4.jpg" alt="Meme image">
-        <img src="imgs/meme-imgs/5.jpg" alt="Meme image">
-        <img src="imgs/meme-imgs/6.jpg" alt="Meme image">
-        <img src="imgs/meme-imgs/7.jpg" alt="Meme image">
-        <img src="imgs/meme-imgs/8.jpg" alt="Meme image">
-        <img src="imgs/meme-imgs/9.jpg" alt="Meme image">
+    <main class="memes-container width-center border">
+        <div class="memes grid">
+            <img class="meme-image-1" src="imgs/meme-imgs/1.jpg" alt="Meme image">
+            <img class="meme-image-2" src="imgs/meme-imgs/2.jpg" alt="Meme image">
+            <img class="meme-image-3" src="imgs/meme-imgs/3.jpg" alt="Meme image">
+            <img class="meme-image-4" src="imgs/meme-imgs/4.jpg" alt="Meme image">
+            <img class="meme-image-5" src="imgs/meme-imgs/5.jpg" alt="Meme image">
+            <img class="meme-image-6" src="imgs/meme-imgs/6.jpg" alt="Meme image">
+            <img class="meme-image-7" src="imgs/meme-imgs/7.jpg" alt="Meme image">
+            <img class="meme-image-8" src="imgs/meme-imgs/8.jpg" alt="Meme image">
+            <img class="meme-image-9" src="imgs/meme-imgs/9.jpg" alt="Meme image">
+        </div>
     </main>
 
-    <section class="about-me-section flex width-center">
+    <section class="about-me-section flex width-center border">
         <img src="imgs/my-image.jpg" alt="My image">
         <div class="about-me-content flex">
             <h2>Eviatar Karbian</h2>
@@ -60,7 +63,7 @@
         </div>
     </section>
 
-    <footer class="main-footer flex width-center">
+    <footer class="main-footer flex width-center border">
         <img src="imgs/logo.png" alt="Memegen logo">
         <div class="copyrights">all-rights-reserved-2019</div>
     </footer>

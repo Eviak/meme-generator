@@ -1,5 +1,12 @@
 :root {
+
+    /* COLORS */
+
     --clr1: #ff7f00;
     --clr2: #e3e3e3;
     --clr3: #8a8a8a;
+
+    /* SIZES */
+
+    --memeWidth: 350px;
 }
