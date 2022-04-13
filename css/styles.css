@@ -12,4 +12,6 @@
 /* COMPONENTS */
 
 @import 'components/main-header.css';
+@import 'components/main.css';
+@import 'components/about-me.css';
 @import 'components/footer.css';

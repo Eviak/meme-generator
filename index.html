@@ -9,20 +9,29 @@
 </head>
 <body>
     
-    <header class="flex">
-        <img src="" alt="Memegen logo">
-        <nav>
-            <a href="#">Gallery</a>
-            <a href="#">About</a>
-        </nav>
+    <header class="flex-spaced">
+            <img class="logo" src="/imgs/logo.png" alt="Memegen logo">
+            <nav>
+                <a href="#">Gallery</a>
+                <a href="#">About</a>
+            </nav>
     </header>
 
-    <section class="filter-section">
-        <div class="search-filter"></div>
-        <div class="click-filter"></div>
+    <section class="filter-section flex-spaced">
+        <div class="search-filter">
+            <input type="text" placeholder="Enter search keyword">
+        </div>
+        <div class="click-filter">
+            <button>funny</button>
+            <button>comics</button>
+            <button>dogs</button>
+            <button>drinks</button>
+            <button>books</button>
+            <button>more...</button>
+        </div>
     </section>
 
-    <main>
+    <main class="memes grid">
         <img src="" alt="Meme image">
         <img src="" alt="Meme image">
         <img src="" alt="Meme image">
@@ -43,7 +52,7 @@
         <a href=""><img src="" alt="Github link"></a>
     </section>
 
-    <footer>
+    <footer class="main-footer">
         <img src="" alt="Memegen logo">
         <div class="copyrights">all-rights-reserved-2019</div>
     </footer>

@@ -1,3 +1,36 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
+
+html {
+  font-family: montserrat;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 1em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+button {
+  border: unset;
+  color: var(--primary-clr-600);
+  background-color: unset;
+  cursor: pointer;
+}

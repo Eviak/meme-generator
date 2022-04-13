@@ -1,0 +1,16 @@
+header {
+  background-color: var(--clr1);
+}
+
+.logo {
+  width: 120px;
+  cursor: pointer;
+}
+
+header nav {
+  color: #fff;
+}
+
+header nav a:not(:last-child) {
+    border-right: 1px solid var(--clr3);
+}
