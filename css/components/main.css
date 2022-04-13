@@ -1,5 +1,11 @@
 .memes {
     background-color: var(--clr2);
-    max-width: 1000px;
-    margin: 0 auto;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 10px;
+}
+
+.memes img {
+    width: 350px;
 }

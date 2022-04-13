@@ -1,8 +1,17 @@
 .flex-spaced {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex {
     display: flex;
-    justify-content: space-between;
 }
 
 .grid {
-    display: grid;
+  display: grid;
+}
+
+.width-center {
+  margin: 0 auto;
+  max-width: 1200px;
 }

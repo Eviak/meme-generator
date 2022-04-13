@@ -1,0 +1,17 @@
+.about-me-section {
+    justify-content: center;
+}
+
+.about-me-section img {
+    width: 300px;
+}
+
+.about-me-content {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-me-content p {
+    font-size: 1.25rem;
+    width: 540px;
+}
