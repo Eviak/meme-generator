@@ -4,7 +4,7 @@
   gap: 100px;
   padding-top: 38px;
   padding-bottom: 23px;
-  /* display: none; */
+  display: none;
 }
 
 .control-section {
@@ -74,10 +74,32 @@
 
 .font-btn-7 {
   grid-area: 2 / 4 / 3 / 5;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.font-color-7 {
+  grid-area: 2 / 4 / 3 / 5;
+  z-index: 0;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-radius: 13px;
 }
 
 .font-btn-8 {
   grid-area: 2 / 5 / 3 / 6;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.font-color-8 {
+  grid-area: 2 / 5 / 3 / 6;
+  z-index: 0;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-radius: 13px;
 }
 
 .share-btn {

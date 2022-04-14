@@ -4,12 +4,12 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
-        {
-        txt: 'I sometimes eat Falafel',
-        size: 40,
-        align: 'left',
-        color: 'red'
-    },
+        // {
+        // txt: 'Enter',
+        // size: 40,
+        // align: 'left',
+        // color: 'red'
+    // }, 
 ]
 }
 
@@ -18,16 +18,18 @@ function getMeme() {
 }
 
 function updategMemeText(txt) {
-    gMeme.lines[0].txt = txt
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
-function updategMemeLines (isAddLine, gSelectedLine) {
+function updategMemeLines(isAddLine, txt, gSelectedLine) {
     if (isAddLine) {
         gMeme.lines.push({
-            txt: 'I LOVE LOVE LOVE FALAFEL',
+            txt,
             size: 40,
             align: 'left',
-            color: 'red'
+            color: 'white',
+            strokeColor: 'black'
+            
         })
     } else {
         gMeme.lines.splice(gMeme.selectedLineIdx, 1)
@@ -35,12 +37,22 @@ function updategMemeLines (isAddLine, gSelectedLine) {
 }
 
 function updategMemeFontSize(isInc) {
-    gMeme.lines[0].size = (isInc) ? (gMeme.lines[0].size + 2) : (gMeme.lines[0].size - 2)
+    gMeme.lines[gMeme.selectedLineIdx].size = (isInc) ? (gMeme.lines[gMeme.selectedLineIdx].size + 2) : (gMeme.lines[gMeme.selectedLineIdx].size - 2)
 }
 
 function updategSelectedLineIdx() {
-    if (gMeme.selectedLineIdx < gMeme.lines.length-1) gMeme.selectedLineIdx++
-    else gMeme.selectedLineIdx = 0
+    if (gMeme.selectedLineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
+        else gMeme.selectedLineIdx = 0
+}
 
-    // console.log(gMeme.selectedLineIdx);
+function updategMemeTextAlign(side) {
+    gMeme.lines[gMeme.selectedLineIdx].align = side
+}
+
+function updategMemeTextColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function updategMemeStrokeColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].strokeColor = color
 }

@@ -43,7 +43,7 @@ function addNavListeners() {
 function addEditorSectionListeners() {
     const elMemeText = document.querySelector('.meme-text-editor')
     elMemeText.addEventListener('input', changeMemeText)
-    
+
     const elChangeLine = document.querySelector('.change-line')
     elChangeLine.addEventListener('mousedown', changeLineFocus)
 
@@ -58,6 +58,21 @@ function addEditorSectionListeners() {
 
     const elFontSizeDec = document.querySelector('.font-size-dec')
     elFontSizeDec.addEventListener('mousedown', fontSizeDec)
+
+    const elAlignLeft = document.querySelector('.align-left')
+    elAlignLeft.addEventListener('mousedown', alignFontLeft)
+
+    const elAlignCenter = document.querySelector('.align-center')
+    elAlignCenter.addEventListener('mousedown', alignFontCenter)
+
+    const elAlignRight = document.querySelector('.align-right')
+    elAlignRight.addEventListener('mousedown', alignFontRight)
+
+    const elStrokeColor = document.querySelector('.stroke-color-input')
+    elStrokeColor.addEventListener('input', changeStrokeColor)
+
+    const elColor = document.querySelector('.font-color-input')
+    elColor.addEventListener('input', changeTextColor)
 }
 
 function onMemeImageClick() {
@@ -72,6 +87,8 @@ function goToGallery() {
 }
 
 function changeMemeText() {
+    const meme = getMeme()
+    if (!meme.lines.length) return
     const txt = document.querySelector('.meme-text-editor').value
     updategMemeText(txt)
     renderMeme()
@@ -83,7 +100,8 @@ function changeLineFocus() {
 }
 
 function addLine() {
-    updategMemeLines(true)
+    const txt = document.querySelector('.meme-text-editor').value
+    updategMemeLines(true, txt)
     renderMeme()
 }
 
@@ -102,6 +120,34 @@ function fontSizeDec() {
     renderMeme()
 }
 
+function alignFontLeft() {
+    updategMemeTextAlign('left')
+    renderMeme()
+}
+
+function alignFontCenter() {
+    updategMemeTextAlign('center')
+    renderMeme()
+}
+
+function alignFontRight() {
+    updategMemeTextAlign('right')
+    renderMeme()
+}
+
+function changeStrokeColor() {
+    var elColorVal = document.querySelector('.stroke-color-input').value
+    updategMemeStrokeColor(elColorVal)
+    renderMeme()
+}
+
+function changeTextColor() {
+    var elColorVal = document.querySelector('.font-color-input').value
+    console.log(elColorVal);
+    updategMemeTextColor(elColorVal)
+    renderMeme()
+}
+
 function drawImgAndText() {
     const meme = getMeme()
     var img = new Image();
@@ -109,20 +155,20 @@ function drawImgAndText() {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         meme.lines.forEach((line, idx) => {
-            if(meme.selectedLineIdx === idx) drawText(`${line.txt}`, 270, 270, true)
-            else drawText(`${line.txt}`, 270, 270, false)
+            drawText(`${line.txt}`, 270, 270, idx)
         });
     };
 }
 
-function drawText(txt, x, y, isLineSelected) {
+function drawText(txt, x, y, lineIdx) {
     var meme = getMeme()
-    gCtx.textBaseline = 'middle';
-    gCtx.textAlign = 'center';
-    gCtx.lineWidth = isLineSelected ? 2 : 1;
-    gCtx.fillStyle = 'white';
-    gCtx.font = `${meme.lines[0].size}px impact`;
-    gCtx.fillText(txt, x, y);
-    gCtx.strokeStyle = 'black';
-    gCtx.strokeText(txt, x, y);
+    // console.log(meme.lines[lineIdx].strokeColor);
+    gCtx.textBaseline = 'middle'
+    gCtx.textAlign = meme.lines[lineIdx].align
+    gCtx.lineWidth = lineIdx === meme.selectedLineIdx ? 2 : 1
+    gCtx.fillStyle = meme.lines[lineIdx].color
+    gCtx.font = `${meme.lines[lineIdx].size}px impact`
+    gCtx.fillText(txt, x, y)
+    gCtx.strokeStyle = meme.lines[lineIdx].strokeColor
+    gCtx.strokeText(txt, x, y)
 }
