@@ -41,6 +41,18 @@ function addNavListeners() {
 }
 
 function addEditorSectionListeners() {
+    const elMemeText = document.querySelector('.meme-text-editor')
+    elMemeText.addEventListener('input', changeMemeText)
+    
+    const elChangeLine = document.querySelector('.change-line')
+    elChangeLine.addEventListener('mousedown', changeLineFocus)
+
+    const elAddLine = document.querySelector('.add-line')
+    elAddLine.addEventListener('mousedown', addLine)
+
+    const elRemoveLine = document.querySelector('.remove-line')
+    elRemoveLine.addEventListener('mousedown', removeLine)
+
     const elFontSizeInc = document.querySelector('.font-size-inc')
     elFontSizeInc.addEventListener('mousedown', fontSizeInc)
 
@@ -59,6 +71,27 @@ function goToGallery() {
 
 }
 
+function changeMemeText() {
+    const txt = document.querySelector('.meme-text-editor').value
+    updategMemeText(txt)
+    renderMeme()
+}
+
+function changeLineFocus() {
+    updategSelectedLineIdx()
+    renderMeme()
+}
+
+function addLine() {
+    updategMemeLines(true)
+    renderMeme()
+}
+
+function removeLine() {
+    updategMemeLines(false)
+    renderMeme()
+}
+
 function fontSizeInc() {
     updategMemeFontSize(true)
     renderMeme()
@@ -70,19 +103,23 @@ function fontSizeDec() {
 }
 
 function drawImgAndText() {
+    const meme = getMeme()
     var img = new Image();
     img.src = 'imgs/meme-imgs/1.jpg'
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        drawText('Lorem ipsum dolor sit amet consectetur adipiscing elit', 270, 270)
+        meme.lines.forEach((line, idx) => {
+            if(meme.selectedLineIdx === idx) drawText(`${line.txt}`, 270, 270, true)
+            else drawText(`${line.txt}`, 270, 270, false)
+        });
     };
 }
 
-function drawText(txt, x, y) {
+function drawText(txt, x, y, isLineSelected) {
     var meme = getMeme()
     gCtx.textBaseline = 'middle';
     gCtx.textAlign = 'center';
-    // gCtx.lineWidth = 2;
+    gCtx.lineWidth = isLineSelected ? 2 : 1;
     gCtx.fillStyle = 'white';
     gCtx.font = `${meme.lines[0].size}px impact`;
     gCtx.fillText(txt, x, y);
