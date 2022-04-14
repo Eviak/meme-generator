@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
+<body onload="onInit()">
 
     <header class="flex-spaced width-center border">
         <div class="logo"></div>
@@ -20,46 +20,81 @@
         </nav>
     </header>
 
-    <section class="filter-section flex-spaced border">
-        <div class="search-filter">
-            <input type="text" placeholder="Enter search keyword">
-        </div>
-        <div class="click-filter flex">
-            <div>funny</div>
-            <div>comics</div>
-            <div>dogs</div>
-            <div>drinks</div>
-            <div>books</div>
-            <div>more...</div>
-        </div>
+    <section class="gallery-section" hidden>
+        <section class="filter-section flex-spaced border">
+            <div class="search-filter">
+                <input type="text" placeholder="Enter search keyword">
+            </div>
+            <div class="click-filter flex">
+                <div>funny</div>
+                <div>comics</div>
+                <div>dogs</div>
+                <div>drinks</div>
+                <div>books</div>
+                <div>more...</div>
+            </div>
+        </section>
+
+        <main class="memes-container width-center border">
+            <div class="memes grid">
+                <img class="meme-image-1" src="imgs/meme-imgs/1.jpg" alt="Meme image">
+                <img class="meme-image-2" src="imgs/meme-imgs/2.jpg" alt="Meme image">
+                <img class="meme-image-3" src="imgs/meme-imgs/3.jpg" alt="Meme image">
+                <img class="meme-image-4" src="imgs/meme-imgs/4.jpg" alt="Meme image">
+                <img class="meme-image-5" src="imgs/meme-imgs/5.jpg" alt="Meme image">
+                <img class="meme-image-6" src="imgs/meme-imgs/6.jpg" alt="Meme image">
+                <img class="meme-image-7" src="imgs/meme-imgs/7.jpg" alt="Meme image">
+                <img class="meme-image-8" src="imgs/meme-imgs/8.jpg" alt="Meme image">
+                <img class="meme-image-9" src="imgs/meme-imgs/9.jpg" alt="Meme image">
+            </div>
+        </main>
+
+        <section class="about-me-section flex width-center border">
+            <img src="imgs/my-image.jpg" alt="My image">
+            <div class="about-me-content flex">
+                <h2>Eviatar Karbian</h2>
+                <p>
+                    is a fictional character, one of the six main characters who appears on the American sitcom Friends (1994–2004). Created by David Crane and Marta Kauffman
+                </p>
+                <div class="about-me-icons">
+                    <a href=""><img src="imgs/icons/linkedin-logo.png" alt="Linkedin link"></a>
+                    <a href=""><img src="imgs/icons/facebook-logo.png" alt="Facebook link"></a>
+                    <a href=""><img src="imgs/icons/github-logo.png" alt="Github link"></a>
+                </div>
+            </div>
+        </section>
     </section>
 
-    <main class="memes-container width-center border">
-        <div class="memes grid">
-            <img class="meme-image-1" src="imgs/meme-imgs/1.jpg" alt="Meme image">
-            <img class="meme-image-2" src="imgs/meme-imgs/2.jpg" alt="Meme image">
-            <img class="meme-image-3" src="imgs/meme-imgs/3.jpg" alt="Meme image">
-            <img class="meme-image-4" src="imgs/meme-imgs/4.jpg" alt="Meme image">
-            <img class="meme-image-5" src="imgs/meme-imgs/5.jpg" alt="Meme image">
-            <img class="meme-image-6" src="imgs/meme-imgs/6.jpg" alt="Meme image">
-            <img class="meme-image-7" src="imgs/meme-imgs/7.jpg" alt="Meme image">
-            <img class="meme-image-8" src="imgs/meme-imgs/8.jpg" alt="Meme image">
-            <img class="meme-image-9" src="imgs/meme-imgs/9.jpg" alt="Meme image">
-        </div>
-    </main>
-
-    <section class="about-me-section flex width-center border">
-        <img src="imgs/my-image.jpg" alt="My image">
-        <div class="about-me-content flex">
-            <h2>Eviatar Karbian</h2>
-            <p>
-                is a fictional character, one of the six main characters who appears on the American sitcom Friends (1994–2004). Created by David Crane and Marta Kauffman
-            </p>
-            <div class="about-me-icons">
-                <a href=""><img src="imgs/icons/linkedin-logo.png" alt="Linkedin link"></a>
-                <a href=""><img src="imgs/icons/facebook-logo.png" alt="Facebook link"></a>
-                <a href=""><img src="imgs/icons/github-logo.png" alt="Github link"></a>
+    <section class="editor-section flex width-center border">
+        <canvas id="my-canvas" height="550px" width="550px"></canvas>
+        <div class="control-section flex-col">
+            <div class="line-focus-section flex-col">
+                <textarea cols="30" rows="2" placeholder="Enter/edit text here"></textarea>
+                <div class="line-focus-buttons">
+                    <button><img src="imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="Switch line focus"></button>
+                    <button><img src="imgs/icons/add.png" alt="Add line"></button>
+                    <button><img src="imgs/icons/trash.png" alt="Delete line"></button>
+                </div>
             </div>
+
+            <div class="line-font-section grid">
+                <button class="font-btn-1"><img src="imgs/icons/increase font - icon.png" alt="Increase font"></button>
+                <button class="font-btn-2"><img src="imgs/icons/decrease font - icon.png" alt="Decrease font"></button>
+                <button class="font-btn-3"><img src="imgs/icons/align-to-left.png" alt="Align text to left"></button>
+                <button class="font-btn-4"><img src="imgs/icons/center-text-alignment.png" alt="Align text to center"></button>
+                <button class="font-btn-5"><img src="imgs/icons/align-to-right.png" alt="Align text to right"></button>
+                <select class="font-select-6">
+                    <option value="1">fdsfa</option>
+                    <option value="1">fsfa</option>
+                    <option value="1">fda</option>
+                </select>
+                <button class="font-btn-7"><img src="imgs/icons/text stroke.png" alt="Bold text"></button>
+                <button class="font-btn-8"><img src="imgs/icons/paint-board-and-brush.png" alt="Text color"></button>
+            </div>
+
+            <div class="share-btn">Share</div>
+
+
         </div>
     </section>
 
@@ -68,7 +103,8 @@
         <div class="copyrights">all-rights-reserved-2019</div>
     </footer>
 
-    <!-- <script src="js/"></script> -->
+    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
 </body>
 
 </html>

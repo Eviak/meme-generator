@@ -1,0 +1,92 @@
+.editor-section {
+  background-color: var(--clr2);
+  justify-content: center;
+  gap: 100px;
+  padding-top: 38px;
+  padding-bottom: 23px;
+}
+
+.control-section {
+  gap: 43px;
+  width: 370px;
+}
+
+.control-section textarea {
+  resize: none;
+  border-radius: 12px;
+  border: none;
+  font-size: 1.25rem;
+  font-family: montserrat;
+  margin-bottom: 9px;
+  padding: 7px 0;
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
+}
+
+.control-section img {
+  width: 40px;
+}
+
+.control-section button {
+  background-color: #fff;
+  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  margin-inline-end: 14px;
+}
+
+.line-font-section {
+  grid-template-columns: repeat(5, 78px);
+  grid-template-rows: 70px 70px;
+  align-items: center;
+}
+
+.font-btn-1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.font-btn-2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.font-btn-3 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.font-btn-4 {
+  grid-area: 1 / 4 / 2 / 5;
+}
+
+.font-btn-5 {
+  grid-area: 1 / 5 / 2 / 6;
+}
+
+.font-select-6 {
+  grid-area: 2 / 1 / 3 / 4;
+  width: 218px;
+  height: 58px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  font-family: montserrat;
+  padding-inline-start: 20px;
+}
+
+.font-btn-7 {
+  grid-area: 2 / 4 / 3 / 5;
+}
+
+.font-btn-8 {
+  grid-area: 2 / 5 / 3 / 6;
+}
+
+.share-btn {
+  background-color: var(--clr1);
+  color: #fff;
+  width: 120px;
+  height: 60px;
+  border-radius: 12px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
