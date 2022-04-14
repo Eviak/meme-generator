@@ -15,12 +15,12 @@
         <div class="logo"></div>
         <!-- <img class="logo" src="/imgs/logo.png" alt="Memegen logo"> -->
         <nav class="flex">
-            <a href="#">Gallery</a>
-            <a href="#">About</a>
+            <a class="gallery-btn" href="#">Gallery</a>
+            <a class="about-btn" href="#">About</a>
         </nav>
     </header>
 
-    <section class="gallery-section" hidden>
+    <section class="gallery-section">
         <section class="filter-section flex-spaced border">
             <div class="search-filter">
                 <input type="text" placeholder="Enter search keyword">
@@ -37,15 +37,15 @@
 
         <main class="memes-container width-center border">
             <div class="memes grid">
-                <img class="meme-image-1" src="imgs/meme-imgs/1.jpg" alt="Meme image">
-                <img class="meme-image-2" src="imgs/meme-imgs/2.jpg" alt="Meme image">
-                <img class="meme-image-3" src="imgs/meme-imgs/3.jpg" alt="Meme image">
-                <img class="meme-image-4" src="imgs/meme-imgs/4.jpg" alt="Meme image">
-                <img class="meme-image-5" src="imgs/meme-imgs/5.jpg" alt="Meme image">
-                <img class="meme-image-6" src="imgs/meme-imgs/6.jpg" alt="Meme image">
-                <img class="meme-image-7" src="imgs/meme-imgs/7.jpg" alt="Meme image">
-                <img class="meme-image-8" src="imgs/meme-imgs/8.jpg" alt="Meme image">
-                <img class="meme-image-9" src="imgs/meme-imgs/9.jpg" alt="Meme image">
+                <img class="meme-image meme-image-1" src="imgs/meme-imgs/1.jpg" alt="Meme image">
+                <img class="meme-image meme-image-2" src="imgs/meme-imgs/2.jpg" alt="Meme image">
+                <img class="meme-image meme-image-3" src="imgs/meme-imgs/3.jpg" alt="Meme image">
+                <img class="meme-image meme-image-4" src="imgs/meme-imgs/4.jpg" alt="Meme image">
+                <img class="meme-image meme-image-5" src="imgs/meme-imgs/5.jpg" alt="Meme image">
+                <img class="meme-image meme-image-6" src="imgs/meme-imgs/6.jpg" alt="Meme image">
+                <img class="meme-image meme-image-7" src="imgs/meme-imgs/7.jpg" alt="Meme image">
+                <img class="meme-image meme-image-8" src="imgs/meme-imgs/8.jpg" alt="Meme image">
+                <img class="meme-image meme-image-9" src="imgs/meme-imgs/9.jpg" alt="Meme image">
             </div>
         </main>
 
@@ -78,11 +78,11 @@
             </div>
 
             <div class="line-font-section grid">
-                <button class="font-btn-1"><img src="imgs/icons/increase font - icon.png" alt="Increase font"></button>
-                <button class="font-btn-2"><img src="imgs/icons/decrease font - icon.png" alt="Decrease font"></button>
-                <button class="font-btn-3"><img src="imgs/icons/align-to-left.png" alt="Align text to left"></button>
-                <button class="font-btn-4"><img src="imgs/icons/center-text-alignment.png" alt="Align text to center"></button>
-                <button class="font-btn-5"><img src="imgs/icons/align-to-right.png" alt="Align text to right"></button>
+                <button class="font-btn-1 font-size-inc"><img src="imgs/icons/increase font - icon.png" alt="Increase font"></button>
+                <button class="font-btn-2 font-size-dec"><img src="imgs/icons/decrease font - icon.png" alt="Decrease font"></button>
+                <button class="font-btn-3 align-to-left"><img src="imgs/icons/align-to-left.png" alt="Align text to left"></button>
+                <button class="font-btn-4 align-center"><img src="imgs/icons/center-text-alignment.png" alt="Align text to center"></button>
+                <button class="font-btn-5 align-to-right"><img src="imgs/icons/align-to-right.png" alt="Align text to right"></button>
                 <select class="font-select-6">
                     <option value="1">fdsfa</option>
                     <option value="1">fsfa</option>
@@ -99,12 +99,13 @@
     </section>
 
     <footer class="main-footer flex width-center border">
-        <img src="imgs/logo.png" alt="Memegen logo">
+        <div class="logo"></div>
         <div class="copyrights">all-rights-reserved-2019</div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/utils.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/meme-utils.js"></script>
+    <script src="js/meme-service.js"></script>
 </body>
 
 </html>

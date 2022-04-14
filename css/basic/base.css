@@ -36,7 +36,7 @@ button {
 }
 
 input[type="text"] {
-    border: unset;
-    border-bottom: 2px #040a2c solid;
-    font-size: 1.1875rem;
+  border: unset;
+  border-bottom: 2px #040a2c solid;
+  font-size: 1.1875rem;
 }

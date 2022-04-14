@@ -1,19 +1,19 @@
 /* SETUP  */
 
-@import 'setup/vars.css';
-@import 'setup/typography.css';
+@import "setup/vars.css";
+@import "setup/typography.css";
 
 /* BASE */
 
-@import 'basic/base.css';
-@import 'basic/layout.css';
-@import 'basic/helpers.css';
+@import "basic/base.css";
+@import "basic/layout.css";
+@import "basic/helpers.css";
 
 /* COMPONENTS */
 
-@import 'components/main-header.css';
-@import 'components/filter.css';
-@import 'components/main.css';
-@import 'components/editor.css';
-@import 'components/about-me.css';
-@import 'components/main-footer.css';
+@import "components/main-header.css";
+@import "components/filter.css";
+@import "components/main.css";
+@import "components/editor.css";
+@import "components/about-me.css";
+@import "components/main-footer.css";
