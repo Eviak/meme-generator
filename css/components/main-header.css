@@ -5,7 +5,7 @@ header {
 }
 
 .logo {
-  background-image: url("/imgs/logo.png");
+  background-image: url("../../imgs/logo.png");
   background-repeat: no-repeat;
   width: 8.125rem;
   height: 1.875rem;
