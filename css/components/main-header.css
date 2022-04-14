@@ -7,11 +7,10 @@ header {
 .logo {
   background-image: url("/imgs/logo.png");
   background-repeat: no-repeat;
-  width: 130px;
-  height: 30px;
+  width: 8.125rem;
+  height: 1.875rem;
   cursor: pointer;
   background-size: contain;
-  /* margin-top: 20px; */
 }
 
 header nav {
@@ -19,7 +18,7 @@ header nav {
 }
 
 header nav a:not(:last-child) {
-  border-right: 1px solid var(--clr3);
+  border-inline-end: 1px solid var(--clr3);
 }
 
 header nav a {
