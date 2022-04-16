@@ -19,6 +19,11 @@ header nav {
 
 header nav a:not(:last-child) {
   border-inline-end: 1px solid var(--clr3);
+  padding-inline-end: 9px;
+}
+
+header nav a:last-child {
+  padding-inline-start: 9px;
 }
 
 header nav a {
@@ -26,4 +31,13 @@ header nav a {
   height: 65px;
   line-height: 65px;
   text-align: center;
+}
+
+.gallery-btn {
+  border-bottom: 4px solid var(--clr4);
+  color: var(--clr4);
+}
+
+header nav a:hover {
+  color: var(--clr4);
 }

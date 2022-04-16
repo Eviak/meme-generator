@@ -21,9 +21,9 @@ function renderMeme(imgSrc = getImg()) {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         meme.lines.forEach((line, idx) => {
             drawText(`${line.txt}`,
-            line.pos.x,
-            line.pos.y,
-            idx)
+                line.pos.x,
+                line.pos.y,
+                idx)
         })
     }
 }
@@ -34,7 +34,7 @@ function drawText(txt, x, y, lineIdx) {
     gCtx.textAlign = meme.lines[lineIdx].align
     gCtx.lineWidth = lineIdx === meme.selectedLineIdx ? 2 : 1
     gCtx.fillStyle = meme.lines[lineIdx].color
-    gCtx.font = `${meme.lines[lineIdx].size}px impact`
+    gCtx.font = `${meme.lines[lineIdx].size}px ${meme.lines[lineIdx].font}`
     gCtx.fillText(txt, x, y)
     gCtx.strokeStyle = meme.lines[lineIdx].strokeColor
     gCtx.strokeText(txt, x, y)
@@ -46,14 +46,6 @@ function addListeners() {
     addNavListeners()
     addEditorSectionListeners()
     addCanvasListeners()
-}
-
-function addGalleryImagesListeners() {
-    const elMemeImages = document.querySelectorAll('.meme-image')
-    elMemeImages.forEach((elMemeImage) => {
-        elMemeImage.addEventListener('mousedown', onGalleryImageClick)
-    })
-
     addFilterEventListeners()
 }
 
@@ -97,6 +89,9 @@ function addEditorSectionListeners() {
     const elAlignRight = document.querySelector('.align-right')
     elAlignRight.addEventListener('mousedown', alignFontRight)
 
+    const elFont = document.querySelector('.font-select-6')
+    elFont.addEventListener('change', changeFontFamily)
+
     const elStrokeColor = document.querySelector('.stroke-color-input')
     elStrokeColor.addEventListener('input', changeStrokeColor)
 
@@ -108,14 +103,6 @@ function addCanvasListeners() {
     gElCanvas.addEventListener('mousedown', onCanvasMouseDown)
     gElCanvas.addEventListener('mousemove', onCanvasMouseMove)
     gElCanvas.addEventListener('mouseup', onCanvasMouseUp)
-}
-
-function onGalleryImageClick(ev) {
-    document.querySelector('.gallery-section').style.display = "none"
-    document.querySelector('.editor-section').style.display = "flex"
-    // console.log(ev.path);
-    setImgSrc(ev.path[0].src)
-    renderMeme(ev.path[0].src)
 }
 
 function goToGallery() {
@@ -176,6 +163,12 @@ function alignFontRight() {
     renderMeme()
 }
 
+function changeFontFamily() {
+    const newFont = document.querySelector('.font-select-6').value
+    updategMemeFontFamily(newFont)
+    renderMeme()
+}
+
 function changeStrokeColor() {
     var elColorVal = document.querySelector('.stroke-color-input').value
     updategMemeStrokeColor(elColorVal)
@@ -217,17 +210,45 @@ function textCursorHover(clickedPos, meme) {
     const textWidth = getSelectedTextWidth()
     const textHeight = getSelectedTextHeight()
 
-    if (
-        clickedPos.x - posX < textWidth &&
-        clickedPos.x - posX > 0 &&
-        (posY - clickedPos.y < textHeight * 0.5 &&
-        posY - clickedPos.y > 0 ||
-        clickedPos.y - posY > 0 &&
-        clickedPos.y - posY < textHeight * 0.5)
-    ) {
-        document.body.style.cursor = 'pointer'
+    if (meme.lines[gMeme.selectedLineIdx].align === 'left') {
+        if (
+            clickedPos.x - posX < textWidth &&
+            clickedPos.x - posX > 0 &&
+            (posY - clickedPos.y < textHeight * 0.5 &&
+                posY - clickedPos.y > 0 ||
+                clickedPos.y - posY > 0 &&
+                clickedPos.y - posY < textHeight * 0.5)
+        ) {
+            document.body.style.cursor = 'pointer'
+        } else {
+            document.body.style.cursor = 'initial'
+        }
+    } else if (gMeme.lines[gMeme.selectedLineIdx].align === 'right') {
+        if (
+            posX - clickedPos.x < textWidth &&
+            clickedPos.x - posX < 0 &&
+            (posY - clickedPos.y < textHeight * 0.5 &&
+                posY - clickedPos.y > 0 ||
+                clickedPos.y - posY > 0 &&
+                clickedPos.y - posY < textHeight * 0.5)
+        ) {
+            document.body.style.cursor = 'pointer'
+        } else {
+            document.body.style.cursor = 'initial'
+        }
     } else {
-        document.body.style.cursor = 'initial'
+        if (
+            (clickedPos.x - posX < textWidth * 0.5 && clickedPos.x - posX > 0 ||
+                clickedPos.x - posX > textWidth * -0.5 && clickedPos.x - posX < 0) &&
+            (posY - clickedPos.y < textHeight * 0.5 &&
+                posY - clickedPos.y > 0 ||
+                clickedPos.y - posY > 0 &&
+                clickedPos.y - posY < textHeight * 0.5)
+        ) {
+            document.body.style.cursor = 'pointer'
+        } else {
+            document.body.style.cursor = 'initial'
+        }
     }
 }
 

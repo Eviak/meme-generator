@@ -5,6 +5,7 @@
 }
 
 .about-me-section > img:first-of-type {
+  object-fit: cover;
   margin-top: 100px;
   width: 20rem;
   height: 20rem;

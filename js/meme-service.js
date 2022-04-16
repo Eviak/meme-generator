@@ -6,6 +6,7 @@ var gMeme = {
     imgSrc: null,
     selectedLineIdx: 0,
     lines: [{
+        font: 'impact',
         isDrag: false,
         pos: { x: 100, y: 50 },
         txt: 'I eat falafel',
@@ -26,6 +27,7 @@ function updategMemeText(txt) {
 function updategMemeLines(isAddLine, txt) {
     if (isAddLine) {
         gMeme.lines.push({
+            font: 'impact',
             isDrag: false,
             pos: gNewLinePos[gNewLinePosIdx],
             txt,
@@ -59,6 +61,10 @@ function updategMemeTextColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
+function updategMemeFontFamily(font) {
+    gMeme.lines[gMeme.selectedLineIdx].font = font
+}
+
 function updategMemeStrokeColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].strokeColor = color
 }
@@ -68,17 +74,45 @@ function isTextClicked(clickedPos) {
     const posY = gMeme.lines[gMeme.selectedLineIdx].pos.y
     const textWidth = getSelectedTextWidth()
     const textHeight = getSelectedTextHeight()
-    if (
-        clickedPos.x - posX < textWidth &&
-        clickedPos.x - posX > 0 &&
-        (posY - clickedPos.y < textHeight * 0.5 &&
-            posY - clickedPos.y > 0 ||
-            clickedPos.y - posY > 0 &&
-            clickedPos.y - posY < textHeight * 0.5)
-    ) {
-        return true
+    if (gMeme.lines[gMeme.selectedLineIdx].align === 'left') {
+        if (
+            clickedPos.x - posX < textWidth &&
+            clickedPos.x - posX > 0 &&
+            (posY - clickedPos.y < textHeight * 0.5 &&
+                posY - clickedPos.y > 0 ||
+                clickedPos.y - posY > 0 &&
+                clickedPos.y - posY < textHeight * 0.5)
+        ) {
+            return true
+        } else {
+            return false
+        }
+    } else if (gMeme.lines[gMeme.selectedLineIdx].align === 'right') {
+        if (
+            posX - clickedPos.x < textWidth &&
+            clickedPos.x - posX < 0 &&
+            (posY - clickedPos.y < textHeight * 0.5 &&
+                posY - clickedPos.y > 0 ||
+                clickedPos.y - posY > 0 &&
+                clickedPos.y - posY < textHeight * 0.5)
+        ) {
+            return true
+        } else {
+            return false
+        }
     } else {
-        return false
+        if (
+            (clickedPos.x - posX < textWidth * 0.5 && clickedPos.x - posX > 0 ||
+            clickedPos.x - posX > textWidth * -0.5 && clickedPos.x - posX < 0) &&
+            (posY - clickedPos.y < textHeight * 0.5 &&
+                posY - clickedPos.y > 0 ||
+                clickedPos.y - posY > 0 &&
+                clickedPos.y - posY < textHeight * 0.5)
+        ) {
+            return true
+        } else {
+            return false
+        }
     }
 }
 

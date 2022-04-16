@@ -21,3 +21,17 @@ function renderFilteredGalleryImages(filteredImgsIds) {
 
     document.querySelector('.memes').innerHTML = strHtml
 }
+
+function addGalleryImagesListeners() {
+    const elMemeImages = document.querySelectorAll('.meme-image')
+    elMemeImages.forEach((elMemeImage) => {
+        elMemeImage.addEventListener('mousedown', onGalleryImageClick)
+    })
+}
+
+function onGalleryImageClick(ev) {
+    document.querySelector('.gallery-section').style.display = "none"
+    document.querySelector('.editor-section').style.display = "flex"
+    setImgSrc(ev.path[0].src)
+    renderMeme(ev.path[0].src)
+}
