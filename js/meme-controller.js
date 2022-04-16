@@ -8,26 +8,48 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 function onInit() {
     gElCanvas = document.querySelector('#my-canvas')
     gCtx = gElCanvas.getContext('2d')
-    renderMeme()
+    // renderMeme()
     addListeners()
 }
 
-function renderMeme() {
-    drawImgAndText()
+function renderMeme(imgSrc = getImg()) {
+    const meme = getMeme()
+    var img = new Image()
+    img.src = imgSrc
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        meme.lines.forEach((line, idx) => {
+            drawText(`${line.txt}`,
+            line.pos.x,
+            line.pos.y,
+            idx)
+        })
+    }
 }
 
+function drawText(txt, x, y, lineIdx) {
+    var meme = getMeme()
+    gCtx.textBaseline = 'middle'
+    gCtx.textAlign = meme.lines[lineIdx].align
+    gCtx.lineWidth = lineIdx === meme.selectedLineIdx ? 2 : 1
+    gCtx.fillStyle = meme.lines[lineIdx].color
+    gCtx.font = `${meme.lines[lineIdx].size}px impact`
+    gCtx.fillText(txt, x, y)
+    gCtx.strokeStyle = meme.lines[lineIdx].strokeColor
+    gCtx.strokeText(txt, x, y)
+}
 function addListeners() {
-    addMemeImagesListeners()
+    addGalleryImagesListeners()
     addLogosListeners()
     addNavListeners()
     addEditorSectionListeners()
     addCanvasListeners()
 }
 
-function addMemeImagesListeners() {
+function addGalleryImagesListeners() {
     const elMemeImages = document.querySelectorAll('.meme-image')
     elMemeImages.forEach((elMemeImage) => {
-        elMemeImage.addEventListener('mousedown', onMemeImageClick)
+        elMemeImage.addEventListener('mousedown', onGalleryImageClick)
     })
 }
 
@@ -84,9 +106,12 @@ function addCanvasListeners() {
     gElCanvas.addEventListener('mouseup', onCanvasMouseUp)
 }
 
-function onMemeImageClick() {
+function onGalleryImageClick(ev) {
     document.querySelector('.gallery-section').style.display = "none"
     document.querySelector('.editor-section').style.display = "flex"
+    // console.log(ev.path);
+    setImgSrc(ev.path[0].src)
+    renderMeme(ev.path[0].src)
 }
 
 function goToGallery() {
@@ -167,7 +192,7 @@ function onCanvasMouseDown(ev) {
 
 function onCanvasMouseMove(ev) {
     const meme = getMeme()
-    if (!meme.lines[0].isDrag) return
+    if (!meme.lines[gMeme.selectedLineIdx].isDrag) return
     const pos = getEvPos(ev)
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
@@ -197,33 +222,33 @@ function getEvPos(ev) {
     return pos
 }
 
-function drawImgAndText() {
-    const meme = getMeme()
-    var img = new Image()
-    img.src = 'imgs/meme-imgs/1.jpg'
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+// function drawImgAndText(imgSrc) {
+//     const meme = getMeme()
+//     var img = new Image()
+//     img.src = imgSrc
+//     img.onload = () => {
+//         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
-        meme.lines.forEach((line, idx) => {
-            drawText(`${line.txt}`,
-                meme.lines[meme.selectedLineIdx].pos.x,
-                meme.lines[meme.selectedLineIdx].pos.y,
-                idx)
-        })
-    }
-}
+//         meme.lines.forEach((line, idx) => {
+//             drawText(`${line.txt}`,
+//                 meme.lines[meme.selectedLineIdx].pos.x,
+//                 meme.lines[meme.selectedLineIdx].pos.y,
+//                 idx)
+//         })
+//     }
+// }
 
-function drawText(txt, x, y, lineIdx) {
-    var meme = getMeme()
-    gCtx.textBaseline = 'middle'
-    gCtx.textAlign = meme.lines[lineIdx].align
-    gCtx.lineWidth = lineIdx === meme.selectedLineIdx ? 2 : 1
-    gCtx.fillStyle = meme.lines[lineIdx].color
-    gCtx.font = `${meme.lines[lineIdx].size}px impact`
-    gCtx.fillText(txt, x, y)
-    gCtx.strokeStyle = meme.lines[lineIdx].strokeColor
-    gCtx.strokeText(txt, x, y)
-}
+// function drawText(txt, x, y, lineIdx) {
+//     var meme = getMeme()
+//     gCtx.textBaseline = 'middle'
+//     gCtx.textAlign = meme.lines[lineIdx].align
+//     gCtx.lineWidth = lineIdx === meme.selectedLineIdx ? 2 : 1
+//     gCtx.fillStyle = meme.lines[lineIdx].color
+//     gCtx.font = `${meme.lines[lineIdx].size}px impact`
+//     gCtx.fillText(txt, x, y)
+//     gCtx.strokeStyle = meme.lines[lineIdx].strokeColor
+//     gCtx.strokeText(txt, x, y)
+// }
 
 function getSelectedTextWidth(txt) {
     return gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt).width

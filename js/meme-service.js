@@ -1,7 +1,6 @@
 'use strict'
-var gSelectedLineIdx = 1
 var gMeme = {
-    selectedImgId: 5,
+    imgSrc: null,
     selectedLineIdx: 0,
     lines: [{
         isDrag: false,
@@ -24,6 +23,8 @@ function updategMemeText(txt) {
 function updategMemeLines(isAddLine, txt, gSelectedLine) {
     if (isAddLine) {
         gMeme.lines.push({
+            isDrag:false,
+            pos: {x: 300,y: 80},
             txt,
             size: 40,
             align: 'left',
@@ -31,6 +32,7 @@ function updategMemeLines(isAddLine, txt, gSelectedLine) {
             strokeColor: 'black'
 
         })
+        gMeme.selectedLineIdx = gMeme.lines.length - 1
     } else {
         gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     }
@@ -86,7 +88,15 @@ function getSelectedTextHeight() {
 }
 
 function moveText(dx, dy) {
-    gMeme.lines[0].pos.x += dx
-    gMeme.lines[0].pos.y += dy
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
 
+}
+
+function getImg() {
+    return gMeme.imgSrc
+}
+
+function setImgSrc(imgSrc) {
+    gMeme.imgSrc = imgSrc
 }
