@@ -13,6 +13,6 @@
 }
 
 .memes img {
-  width: var(--memeWidth);
+  max-width: var(--memeWidth);
   cursor: pointer;
 }

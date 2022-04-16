@@ -1,6 +1,6 @@
 'use strict'
 
-var gFilterKeys =   ['politician', 'actor', 'cartoon', 'animal', 'dog', 'cat', 'baby', 'smile', 'kiss', 'sleep', 'glasses', 'no-glasses', 'no-smile', 'no-dog']
+var gFilterKeys =   ['ALL', 'politician', 'actor', 'cartoon', 'animal', 'dog', 'cat', 'baby', 'smile', 'kiss', 'sleep', 'glasses', 'no-glasses', 'no-smile', 'no-dog']
 
 function getFilterKeys() {
     return gFilterKeys

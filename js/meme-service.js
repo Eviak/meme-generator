@@ -1,10 +1,13 @@
 'use strict'
+const gNewLinePos = [{ x: 100, y: 450 }, { x: 100, y: 250 }, { x: 100, y: 50 }]
+var gNewLinePosIdx = 0
+
 var gMeme = {
     imgSrc: null,
     selectedLineIdx: 0,
     lines: [{
         isDrag: false,
-        pos: { x: 100, y: 80 },
+        pos: { x: 100, y: 50 },
         txt: 'I eat falafel',
         size: 40,
         align: 'left',
@@ -20,11 +23,11 @@ function updategMemeText(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
-function updategMemeLines(isAddLine, txt, gSelectedLine) {
+function updategMemeLines(isAddLine, txt) {
     if (isAddLine) {
         gMeme.lines.push({
-            isDrag:false,
-            pos: {x: 100,y: 350},
+            isDrag: false,
+            pos: gNewLinePos[gNewLinePosIdx],
             txt,
             size: 40,
             align: 'left',
@@ -33,6 +36,7 @@ function updategMemeLines(isAddLine, txt, gSelectedLine) {
 
         })
         gMeme.selectedLineIdx = gMeme.lines.length - 1
+        gNewLinePosIdx++
     } else {
         gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     }
@@ -68,9 +72,9 @@ function isTextClicked(clickedPos) {
         clickedPos.x - posX < textWidth &&
         clickedPos.x - posX > 0 &&
         (posY - clickedPos.y < textHeight * 0.5 &&
-        posY - clickedPos.y > 0 ||
-        clickedPos.y - posY > 0 &&
-        clickedPos.y - posY < textHeight * 0.5)
+            posY - clickedPos.y > 0 ||
+            clickedPos.y - posY > 0 &&
+            clickedPos.y - posY < textHeight * 0.5)
     ) {
         return true
     } else {

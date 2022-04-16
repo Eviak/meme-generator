@@ -37,6 +37,8 @@ function renderClickFilter() {
     elClickFilter.innerHTML = strHtml
 }
 
+// EVENT LISTENERS:
+
 function addFilterEventListeners() {
     //MORE BUTTON:
     const elFilterMoreBtn = document.querySelector('.filter-more-btn')
@@ -51,7 +53,12 @@ function addFilterEventListeners() {
     elFilterKeyBtns.forEach(elFilterKeyBtn => {
         elFilterKeyBtn.addEventListener('mousedown', onFilterKeyClick)
     })
+
+    //TEXT INPUT FILTER:
+    const elFilterInput = document.querySelector('.filter-input')
+    elFilterInput.addEventListener('change', onFilterChange)
 }
+
 
 function onFilterMoreBtnClick() {
     const elFilterMoreBtn = document.querySelector('.filter-more-btn')
@@ -74,6 +81,12 @@ function onFilterMoreCloseBtn() {
 
 function onFilterKeyClick(ev) {
     var filteredImgsIds = getFilteredImagesIds(ev.target.innerText)
-
     renderFilteredGalleryImages(filteredImgsIds)
+    addGalleryImagesListeners()
+}
+
+function onFilterChange(ev) {
+    var filteredImgsIds = getFilteredImagesIds(document.querySelector('.filter-input').value)
+    renderFilteredGalleryImages(filteredImgsIds)
+    addGalleryImagesListeners()
 }
