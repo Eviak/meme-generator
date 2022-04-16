@@ -111,6 +111,8 @@ function goToGallery() {
     renderGalleryImages()
     addGalleryImagesListeners()
 
+    document.querySelector('.gallery-btn').style.borderBottom = '4px solid var(--clr4)'
+    document.querySelector('.gallery-btn').style.color = '#040a2c'
 }
 
 function changeMemeText() {

@@ -34,4 +34,10 @@ function onGalleryImageClick(ev) {
     document.querySelector('.editor-section').style.display = "flex"
     setImgSrc(ev.path[0].src)
     renderMeme(ev.path[0].src)
+
+    const elNavBtns = document.querySelectorAll('header nav a')
+    elNavBtns.forEach(elNavBtn => {
+        elNavBtn.style.borderBottom = 'none'
+        elNavBtn.style.color = 'white'
+    })
 }

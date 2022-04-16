@@ -33,11 +33,10 @@ header nav a {
   text-align: center;
 }
 
-.gallery-btn {
-  border-bottom: 4px solid var(--clr4);
+header nav a:hover {
   color: var(--clr4);
 }
-
-header nav a:hover {
+.gallery-btn {
+  border-bottom: 4px solid var(--clr4);
   color: var(--clr4);
 }

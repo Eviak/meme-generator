@@ -9,7 +9,7 @@ var gMeme = {
         font: 'impact',
         isDrag: false,
         pos: { x: 100, y: 50 },
-        txt: 'I eat falafel',
+        txt: 'Your text here',
         size: 40,
         align: 'left',
         color: 'red'
