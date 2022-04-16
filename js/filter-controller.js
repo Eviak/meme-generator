@@ -28,11 +28,11 @@ function renderClickFilter() {
     }
 
     strHtml += `<div class="filter-more-btn">more...</div>`
-    
-    for (let i = 5; i < filterKeys.length-1; i++) {
+
+    for (let i = 5; i < filterKeys.length; i++) {
         strHtml += `<div class="filter-more-item hide">${filterKeys[i]}</div>`
     }
-    strHtml += `<div class="filter-more-item hide filter-more-close">hide...</div>`
+    strHtml += `<div class="filter-more-item hide filter-more-close">close...</div>`
 
     elClickFilter.innerHTML = strHtml
 }
@@ -41,9 +41,16 @@ function addFilterEventListeners() {
     //MORE BUTTON:
     const elFilterMoreBtn = document.querySelector('.filter-more-btn')
     elFilterMoreBtn.addEventListener('mousedown', onFilterMoreBtnClick)
-        //MORE CLOSE BUTTON:
+
+    //MORE CLOSE BUTTON:
     const elFilterMoreCloseBtn = document.querySelector('.filter-more-close')
     elFilterMoreCloseBtn.addEventListener('mousedown', onFilterMoreCloseBtn)
+
+    //KEYS:
+    const elFilterKeyBtns = document.querySelectorAll('.click-filter > *')
+    elFilterKeyBtns.forEach(elFilterKeyBtn => {
+        elFilterKeyBtn.addEventListener('mousedown', onFilterKeyClick)
+    })
 }
 
 function onFilterMoreBtnClick() {
@@ -63,4 +70,10 @@ function onFilterMoreCloseBtn() {
     elFilterMoreItems.forEach(item => {
         item.style.display = 'none'
     })
+}
+
+function onFilterKeyClick(ev) {
+    var filteredImgsIds = getFilteredImagesIds(ev.target.innerText)
+
+    renderFilteredGalleryImages(filteredImgsIds)
 }

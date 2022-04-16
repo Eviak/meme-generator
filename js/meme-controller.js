@@ -8,6 +8,7 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 function onInit() {
     gElCanvas = document.querySelector('#my-canvas')
     gCtx = gElCanvas.getContext('2d')
+    renderGalleryImages()
     renderFilterSection()
     addListeners()
 }
