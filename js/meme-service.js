@@ -24,7 +24,7 @@ function updategMemeLines(isAddLine, txt, gSelectedLine) {
     if (isAddLine) {
         gMeme.lines.push({
             isDrag:false,
-            pos: {x: 300,y: 80},
+            pos: {x: 100,y: 350},
             txt,
             size: 40,
             align: 'left',

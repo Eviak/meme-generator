@@ -8,7 +8,7 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 function onInit() {
     gElCanvas = document.querySelector('#my-canvas')
     gCtx = gElCanvas.getContext('2d')
-    // renderMeme()
+    renderFilterSection()
     addListeners()
 }
 
@@ -38,6 +38,7 @@ function drawText(txt, x, y, lineIdx) {
     gCtx.strokeStyle = meme.lines[lineIdx].strokeColor
     gCtx.strokeText(txt, x, y)
 }
+
 function addListeners() {
     addGalleryImagesListeners()
     addLogosListeners()
@@ -51,6 +52,8 @@ function addGalleryImagesListeners() {
     elMemeImages.forEach((elMemeImage) => {
         elMemeImage.addEventListener('mousedown', onGalleryImageClick)
     })
+
+    addFilterEventListeners()
 }
 
 function addLogosListeners() {
@@ -134,8 +137,8 @@ function changeLineFocus() {
 }
 
 function addLine() {
-    const txt = document.querySelector('.meme-text-editor').value
-    updategMemeLines(true, txt)
+    // const txt = document.querySelector('.meme-text-editor').value
+    updategMemeLines(true, 'New line')
     renderMeme()
 }
 
@@ -191,9 +194,10 @@ function onCanvasMouseDown(ev) {
 }
 
 function onCanvasMouseMove(ev) {
-    const meme = getMeme()
-    if (!meme.lines[gMeme.selectedLineIdx].isDrag) return
     const pos = getEvPos(ev)
+    const meme = getMeme()
+    textCursorHover(pos, meme)
+    if (!meme.lines[meme.selectedLineIdx].isDrag) return
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
     moveText(dx, dy)
@@ -201,9 +205,31 @@ function onCanvasMouseMove(ev) {
     renderMeme()
 }
 
+function textCursorHover(clickedPos, meme) {
+    if (meme.lines[meme.selectedLineIdx].isDrag) return
+
+    const posX = meme.lines[meme.selectedLineIdx].pos.x
+    const posY = meme.lines[meme.selectedLineIdx].pos.y
+    const textWidth = getSelectedTextWidth()
+    const textHeight = getSelectedTextHeight()
+
+    if (
+        clickedPos.x - posX < textWidth &&
+        clickedPos.x - posX > 0 &&
+        (posY - clickedPos.y < textHeight * 0.5 &&
+        posY - clickedPos.y > 0 ||
+        clickedPos.y - posY > 0 &&
+        clickedPos.y - posY < textHeight * 0.5)
+    ) {
+        document.body.style.cursor = 'pointer'
+    } else {
+        document.body.style.cursor = 'initial'
+    }
+}
+
 function onCanvasMouseUp() {
     setTextDrag(false)
-    document.body.style.cursor = 'grab'
+    document.body.style.cursor = 'initial'
 }
 
 function getEvPos(ev) {
@@ -253,3 +279,4 @@ function getEvPos(ev) {
 function getSelectedTextWidth(txt) {
     return gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt).width
 }
+

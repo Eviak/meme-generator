@@ -9,9 +9,12 @@
 .click-filter {
   font-size: 1.1875rem;
   gap: 50px;
+  max-width: 650px;
+  flex-wrap: wrap;
 }
 
 .click-filter div {
   cursor: pointer;
   height: 1em;
 }
+
