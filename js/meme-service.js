@@ -38,9 +38,12 @@ function updategMemeLines(isAddLine, txt) {
 
         })
         gMeme.selectedLineIdx = gMeme.lines.length - 1
-        gNewLinePosIdx++
+        // gNewLinePosIdx = gNewLinePosIdx === 2 ? 0 : gNewLinePosIdx++
+        if (gNewLinePosIdx === 2) gNewLinePosIdx = 0
+        else gNewLinePosIdx++
     } else {
         gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+        gMeme.selectedLineIdx = gMeme.lines.length - 1
     }
 }
 
@@ -48,7 +51,7 @@ function updategMemeFontSize(isInc) {
     gMeme.lines[gMeme.selectedLineIdx].size = (isInc) ? (gMeme.lines[gMeme.selectedLineIdx].size + 2) : (gMeme.lines[gMeme.selectedLineIdx].size - 2)
 }
 
-function updategSelectedLineIdx() {
+function updategMemeSelectedLineIdx() {
     if (gMeme.selectedLineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
         else gMeme.selectedLineIdx = 0
 }

@@ -122,7 +122,7 @@ function changeMemeText() {
 }
 
 function changeLineFocus() {
-    updategSelectedLineIdx()
+    updategMemeSelectedLineIdx()
     updateMemeTextEditor()
     renderMeme()
 }
@@ -134,7 +134,10 @@ function addLine() {
 }
 
 function removeLine() {
+    var meme = getMeme()
+    if (!meme.lines.length) return
     updategMemeLines(false)
+    // updategMemeSelectedLineIdx()
     renderMeme()
 }
 
